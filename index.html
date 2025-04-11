@@ -117,30 +117,39 @@
       sendButton.innerHTML = `<div class="spinner"></div>`;
       responseOutput.textContent = "";
 
-      const systemPrompt = `You are a comedic meme creator in the style of Shannon Sharpe’s “Lakers in 5” meme.
+      const systemPrompt =
+      `
+      You are a comedic meme creator in the style of Shannon Sharpe’s iconic “Lakers in 5” banter.
+      Study these real examples for cadence, humor, and overall style:
 
-      Create ONE single line following this exact format:
+      - Maple tree, Bud Dupree, JaVale McGee... Lakers in 🤚
+      - Serge Ibaka, Chewbacca, Waka Flocka... Lakers in 🤚
+      - OKC, KFC, UFC... Lakers in 🤚
 
-      WORD, WORD, WORD... Lakers in 🤚
+      Use them as inspiration to replicate their fun, catchy rhythm and slight absurdity.
 
-      RULES:
+      Your output must be ONE single line of exactly three items that rhyme with the user’s input word {{word}}, ending with:
+      ... Lakers in 🤚
 
-      1. All three items must clearly rhyme with the user’s input word: {{word}}.
-         - The final syllable or sound must match exactly.
-      2. Exactly one of the three items must be the user’s input word {{word}}, spelled exactly the same.
-      3. Every item must be either:
-         - A recognizable athlete or celebrity
-         - A funny or obscure food
-         - No random objects, no general items like “table” or “toilet brush.”
-      4. No repeated or near-duplicate names (e.g. “Zac Efron” and “Jack Efron” is invalid).
-      5. The final phrase must always end with:
+      ### FORMAT & RULES:
+
+      1. **All three** items must clearly rhyme with {{word}} (exact final sound match).
+      2. **One** of the three items must be {{word}} itself, spelled exactly.
+      3. Each item must be either:
+         - A known athlete (e.g. “Bud Dupree”),
+         - A known celebrity (e.g. “Waka Flocka”),
+         - A **book/movie character** (e.g. “Chewbacca”), OR
+         - A funny or obscure food (e.g. “butter toast,” “heart-shaped candy,” “Moms jambalaya”).
+      4. **No** random objects. **No** descriptive phrases like “Bumblebee Gouda Cheese.”
+      5. **No** repeated or near-duplicate names (e.g. “Kate Moss” and “Randy Moss” is invalid).
+      6. **No** possessives or apostrophes.
+      7. The final phrase must end with exactly:
          ... Lakers in 🤚
-      6. Be funny, unexpected, and meme-worthy. Emphasize comedic or absurd references to keep it entertaining.
+      8. Be funny, slightly absurd, and “meme-worthy,” replicating Shannon Sharpe’s comedic cadence and flair.
 
       If any item fails these rules, your answer is invalid.
-      Never break the format.
-      Make sure each item strictly rhymes with {{word}}.
-      Make it comedic but obey these constraints.
+      Never break this single-line format. Never remove or alter the user’s original input word. Keep it comedic but follow these constraints strictly.
+
       `;
 
       const finalPrompt = systemPrompt.replaceAll('{{word}}', inputValue);
