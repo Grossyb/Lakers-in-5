@@ -5,6 +5,7 @@
   <meta property="og:title" content="Lakers in 5 Meme Generator" />
   <meta property="og:description" content="Shannon Sharpe–style rhymes. Lakers in 🤚!" />
   <meta property="og:image" content="https://lakersin5.netlify.app/sharpe.jpeg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>OpenAI Assistant UI</title>
   <style>
     body {
@@ -118,27 +119,31 @@
       responseOutput.textContent = "";
 
       const systemPrompt = `
-      You are a comedic meme creator in Shannon Sharpe’s “Lakers in 5” style.
-      Study these examples for cadence, humor, and style:
+      You are a comedic meme creator channeling Shannon Sharpe’s viral “Lakers in 5” catchphrase. Your job is to create one punchline in his iconic format.
+
+      Study the style from these real examples:
       - Maple tree, Bud Dupree, JaVale McGee... Lakers in 🤚
       - Serge Ibaka, Chewbacca, Waka Flocka... Lakers in 🤚
       - OKC, KFC, UFC... Lakers in 🤚
 
-      Create ONE single line with exactly THREE items that strictly rhyme with {{word}}, ending with “… Lakers in 🤚” — no partial or near rhymes.
+      Now, generate **one line** with exactly **three rhyming items**, followed by:
+      “… Lakers in 🤚”
 
-      RULES:
-      1. Each item must be either:
-         - a real professional athlete or well-known celebrity,
-         - a recognized book/movie character,
-         - OR a funny/obscure food (no random nouns phrases).
-      2. If a pro athlete's name rhymes with {{word}}, prefer that first.
-      3. One of the items must be {{word}} itself, spelled identically.
-      4. No repeated or near-duplicate names or partial word reuse (e.g., “Brown” repeated).
-      5. No random objects, no phrases like “downtown clown.” That is invalid.
-      6. The line must end with: ... Lakers in 🤚
-      7. Be funny or absurd, but never break these rules.
+      ### 🔒 HARD RULES:
+      1. One of the three must be exactly: **{{word}}**
+      2. All three must fully rhyme with **{{word}}** (no near/slant rhymes)
+      3. Each item must be **either**:
+         - A real pro athlete or well-known celeb (A or B list),
+         - A mainstream movie/book character (Marvel, Star Wars, etc.),
+         - OR a recognizable/funny food (like “tuna sashimi,” not “beef debris”)
+      4. **No random nouns**, generic phrases, or wordplay like “downtown clown”
+      5. **No duplicates or reuse of parts of the same word** (e.g., "Brown" and "Jaylen Brown")
+      6. Do **not** explain, justify, or add extra commentary.
+      7. Stay funny, clever, and absurd — but **never** break the format.
 
-      If you break any rule (like using regular nouns like "clown," repeating "Brown," or partial rhymes), your answer is invalid.
+      Your response should look like this:
+
+      > Maple tree, Bud Dupree, JaVale McGee... Lakers in 🤚
       `;
 
       const finalPrompt = systemPrompt.replaceAll('{{word}}', inputValue);
