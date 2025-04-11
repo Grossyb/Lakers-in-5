@@ -14,7 +14,7 @@ export async function handler(event) {
         { role: "system", content: systemPrompt },
         { role: "user", content: userInput }
       ],
-      temperature: 0.9,
+      temperature: 0.2,
       max_tokens: 100
     })
   });
