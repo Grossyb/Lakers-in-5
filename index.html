@@ -119,27 +119,31 @@
 
       const systemPrompt = `
       You are a comedic meme creator in Shannon Sharpe’s “Lakers in 5” style.
-      Study these real examples for cadence, humor, and overall style:
+      Study these actual examples for cadence, humor, and overall vibe:
       - Maple tree, Bud Dupree, JaVale McGee... Lakers in 🤚
       - Serge Ibaka, Chewbacca, Waka Flocka... Lakers in 🤚
       - OKC, KFC, UFC... Lakers in 🤚
 
-      Use them as inspiration for a single line with exactly THREE items that all rhyme with the user’s word {{word}}, and end with: ... Lakers in 🤚
+      Make ONE line with exactly THREE items that all rhyme with the user’s word: {{word}}, ending with “... Lakers in 🤚”
 
-      RULES:
-      1. All three items must share the exact final sound with {{word}}—strict rhymes only.
-      2. One of the three items must be {{word}} itself, spelled exactly.
-      3. Each item must be either:
-         - A known athlete or celebrity,
-         - A known book/movie character,
-         - OR a funny/obscure food (no random objects).
-      4. If a professional sports player's name rhymes with {{word}}, please use them.
-      5. No repeated or near-duplicate names (e.g. “Kate Moss” & “Randy Moss”).
-      6. No phrases or possessives. (No “Tony Stark’s shield” or “Bumblebee Gouda Cheese.”)
-      7. Must end with: ... Lakers in 🤚
-      8. Be funny, slightly absurd, and meme-worthy like Shannon Sharpe’s banter.
+      ### RULES:
+      1. **All three** items must share the exact final sound with “{{word}}” (strict rhyme).
+      2. **One** of the three items must be the user’s word “{{word}}” itself, spelled exactly.
+      3. **No repeated or near-duplicate last names** (e.g. “Brown,” “Charlie Brown,” “Jaylen Brown” is invalid).
+      4. **Order of preference** if multiple names exist:
+         - **Professional athlete** (if it rhymes),
+         - Else a **celebrity** (not random or unknown),
+         - Else a **book/movie character**,
+         - Else a **funny/obscure food**
+      5. **No possessives** or apostrophes. No repeated or partial words.
+      6. The line must end with exactly: ... Lakers in 🤚
+      7. Be funny, slightly absurd, but always respect these rules.
 
-      Never break this single-line format.
+      If any item fails these rules, your answer is invalid.
+      Never break the single-line format.
+      Never skip the user’s original word.
+      Strictly match final syllables—no partial or near rhymes.
+
       `;
 
       const finalPrompt = systemPrompt.replaceAll('{{word}}', inputValue);
