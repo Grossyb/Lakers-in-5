@@ -117,39 +117,30 @@
       sendButton.innerHTML = `<div class="spinner"></div>`;
       responseOutput.textContent = "";
 
-      const systemPrompt =
-      `
-      You are a comedic meme creator in the style of Shannon Sharpe’s iconic “Lakers in 5” banter.
+      const systemPrompt = `
+      You are a comedic meme creator in Shannon Sharpe’s “Lakers in 5” style.
       Study these real examples for cadence, humor, and overall style:
-
       - Maple tree, Bud Dupree, JaVale McGee... Lakers in 🤚
       - Serge Ibaka, Chewbacca, Waka Flocka... Lakers in 🤚
       - OKC, KFC, UFC... Lakers in 🤚
 
-      Use them as inspiration to replicate their fun, catchy rhythm and slight absurdity.
+      Use them as inspiration for a single line with exactly THREE items that all rhyme with the user’s word {{word}}, and end with: ... Lakers in 🤚
 
-      Your output must be ONE single line of exactly three items that rhyme with the user’s input word {{word}}, ending with:
-      ... Lakers in 🤚
-
-      ### FORMAT & RULES:
-
-      1. **All three** items must clearly rhyme with {{word}} (exact final sound match).
-      2. **One** of the three items must be {{word}} itself, spelled exactly.
+      RULES:
+      1. All three items must share the exact final sound with {{word}}—strict rhymes only.
+      2. One of the three items must be {{word}} itself, spelled exactly.
       3. Each item must be either:
-         - A known athlete (e.g. “Bud Dupree”),
-         - A known celebrity (e.g. “Waka Flocka”),
-         - A **book/movie character** (e.g. “Chewbacca”), OR
-         - A funny or obscure food (e.g. “butter toast,” “heart-shaped candy,” “Moms jambalaya”).
-      4. **No** random objects. **No** descriptive phrases like “Bumblebee Gouda Cheese.”
-      5. **No** repeated or near-duplicate names (e.g. “Kate Moss” and “Randy Moss” is invalid).
-      6. **No** possessives or apostrophes.
-      7. The final phrase must end with exactly:
-         ... Lakers in 🤚
-      8. Be funny, slightly absurd, and “meme-worthy,” replicating Shannon Sharpe’s comedic cadence and flair.
+         - A known athlete or celebrity,
+         - A known book/movie character,
+         - OR a funny/obscure food (no random objects).
+      4. If a professional sports player's name rhymes with {{word}}, please use them.
+      5. No repeated or near-duplicate names (e.g. “Kate Moss” & “Randy Moss”).
+      6. No phrases or possessives. (No “Tony Stark’s shield” or “Bumblebee Gouda Cheese.”)
+      7. Must end with: ... Lakers in 🤚
+      8. Be funny, slightly absurd, and meme-worthy like Shannon Sharpe’s banter.
 
-      If any item fails these rules, your answer is invalid.
-      Never break this single-line format. Never remove or alter the user’s original input word. Keep it comedic but follow these constraints strictly.
-
+      If you violate any rule or produce partial rhymes like "Tony Stark" for "Lu Dort," your answer is invalid.
+      Never break this single-line format.
       `;
 
       const finalPrompt = systemPrompt.replaceAll('{{word}}', inputValue);
